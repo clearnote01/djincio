@@ -52,10 +52,10 @@ class async_view():
             future_val.set_result(result)
 
 
-async def get_object_or_404_async(model, pk):
-    executor = ThreadPoolExecutor(max_workers=3)
-    loop = asyncio.get_event_loop()
-    result = await loop.run_in_executor(get_object_or_404, model, pk, executor=executor)
-    return result
+#async def get_object_or_404_async(model, pk):
+#    executor = ThreadPoolExecutor(max_workers=3)
+#    loop = asyncio.get_event_loop()
+#    result = await loop.run_in_executor(get_object_or_404, model, pk, executor=executor)
+#    return result
 
 

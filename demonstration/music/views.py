@@ -9,7 +9,7 @@ from .models import Album, Song
 import asyncio
 import aiohttp
 import requests
-from djincio import async_view, get_object_or_404_async
+from djincio import async_view
 
 AUDIO_FILE_TYPES = ['wav', 'mp3', 'ogg']
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
@@ -138,12 +138,9 @@ async def detail(request, album_id):
         return render(request, 'music/login.html')
     else:
         user = request.user
-        #album = get_object_or_404(Album, pk=album_id)
-        print('await')
-        album = await get_object_or_404_async(Album, pk=album_id)
-        print('await')
+        album = get_object_or_404(Album, pk=album_id)
+        #album = await get_object_or_404_async(Album, pk=album_id)
         print(album.save())
-        print('working till here')
         return render(request, 'music/detail.html',
                 {'album': album,
                     'user': user,
